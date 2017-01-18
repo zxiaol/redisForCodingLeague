@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<TITLE>Coding League</TITLE>
+<link rel="stylesheet" href="reset.css">    
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+
+<script src="vendor/angular.min.js"></script>
+<script src="vendor/angular-animate.min.js"></script>
+
+<script src="app.js"></script>
+
+
+<body ng-app="codeLeagueApp" ng-controller="rankCtrl">
+ <div class="header">
+  <h1 class="header__content-text ">
+    Coding League Ranking List
+  </h1>
+  <p class="header-tips">Execution Time and Rank information are just for your reference. We will get final Execution Time using physical machine and provide the final ranking according to programming language later</p>
+  <!-- <a class="header-tips">--- Sorted by the num of passed test</a> -->
+  </div>
+
+		<section>
+			<!-- <h1>Coding League Ranking List</h1> -->
+			<!-- <a>--- Sorted by the num of passed test</a> -->
+			<!-- <br/><br/>  -->
+			<div  class="tbl-header">
+			<table cellpadding="0" cellspacing="0" border="0">
+			  <thead>
+			    <tr>
+			      <th>NO.</th>
+			      <th>Team</th>
+			      <th>Pass Rate (%)</th>
+			      <th>Test Failed</th>  
+			      <th>Update Time</th>      
+			      <th>Execute Time</th>
+			      <th>Rank</th>
+			      <th>Delt Rank</th>			      
+			    </tr>
+			  </thead>
+			</table>
+			</div>
+			 
+			<div  class="tbl-content">
+			<table cellpadding="0" cellspacing="0" border="0">
+			  <tbody>
+			   <tr ng-repeat="team in teams track by $index">
+			      <td>{{$index+1}}</td>
+			      <td>{{ team.name}} </td>
+			      <td>{{team.passRate}}</td>
+			      <td>{{team.failTest}}</td>
+			      <td>{{team.updateTime}}</td>		      
+			      <td>{{team.executionTime}}</td>	
+			      <td>{{team.rank}}</td>	
+			      <td><i ng-class="{'fa fa-caret-up': team.up, 'fa fa-caret-down': team.down, 'fa':team.keep}"
+			      aria-hidden="true"></i><a class="change-value">{{team.changeValue}}</a></td>	 
+			      <!-- <td>{{team.change}}</td> -->
+			    </tr>
+			      </tbody>
+			</table>
+			</div>
+		</section>
+ </body>
+ </html>
